@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+
+    <contextName>LOGBACK</contextName>
+    <property name="LOG.INFO.PATH" value="/info/logs"/>
+    <property name="LOG.ERROR.PATH" value="/error/logs"/>
+    <Property name="PROJECT_NAME" value="user-center"/>
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger - %msg%n"></property>
+    <property name="MAX_HISTORY" value="15"></property>
+    <property name="MAX_FILE_SIZE" value="150MB"/>
+    <property name="TOTAL_SIZE_CAP" value="10GB"></property>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="INFO-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG.INFO.PATH}/${PROJECT_NAME}/${PROJECT_NAME}.info.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG.INFO.PATH}/${PROJECT_NAME}/${PROJECT_NAME}.info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG.ERROR.PATH}/${PROJECT_NAME}/${PROJECT_NAME}.error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG.ERROR.PATH}/${PROJECT_NAME}/${PROJECT_NAME}.error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+	
+	<!--指定特定路径下的日志输出为debug模式。这里是指定持久层操作打印出sql-->
+    <logger name="com.project.manage.dao" level="debug"></logger>
+	
+	<!--指定不同环境dev、test、prod下的日志输出方式-->
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="INFO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <root level="info">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="INFO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </root>
+    </springProfile>
+	<!--指定prod下的日志输出方式为控制台输出-->
+    <springProfile name="prod">
+        <root level="info">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+</configuration>

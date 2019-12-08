@@ -25,11 +25,19 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- log -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
@@ -55,15 +63,20 @@
 		</dependency>
 		
 		 <!-- Need this to compile JSP -->
-	    <dependency>
-	  	  <groupId>org.apache.tomcat.embed</groupId>
-	   	  <artifactId>tomcat-embed-jasper</artifactId>
-	   	  <version>7.0.59</version>
-	    </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>  
 	    <dependency>
 	       <groupId>javax.servlet</groupId>
 	       <artifactId>jstl</artifactId>
 	   </dependency>
+	   <dependency>
+           <groupId>javax.servlet</groupId>
+           <artifactId>javax.servlet-api</artifactId>
+           <scope>provided</scope> 
+        </dependency>  
 
 	   <dependency>
 		    <groupId>io.springfox</groupId>
@@ -71,13 +84,18 @@
 		    <version>2.7.0</version>
 	   </dependency>
 	   <!-- swagger-ui -->
-	    
 	   <dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>2.7.0</version>
 	   </dependency>
 
+		<!--热部署 -->
+	   <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-devtools</artifactId>
+	        <optional>true</optional>
+	   </dependency>
 	</dependencies>
 
 	<build>
