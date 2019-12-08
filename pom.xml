@@ -12,7 +12,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.oa.manage</groupId>
+	<groupId>com.project.manage</groupId>
 	<artifactId>OAmanage</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OAmanage</name>

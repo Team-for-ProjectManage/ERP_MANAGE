@@ -1,6 +1,6 @@
 package com.project.manage.service;
 
-import com.oa.manage.common.Result;
+import com.project.manage.common.Result;
 
 public interface IUserService {
 

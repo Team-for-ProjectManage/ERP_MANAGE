@@ -1,4 +1,4 @@
-package com.oa.manage;
+package com.project.manage;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

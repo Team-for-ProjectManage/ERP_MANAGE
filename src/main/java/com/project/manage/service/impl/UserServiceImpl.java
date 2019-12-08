@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.oa.manage.common.Result;
-import com.oa.manage.common.ResultCode;
+import com.project.manage.common.Result;
+import com.project.manage.common.ResultCode;
 import com.project.manage.dao.UserDao;
 import com.project.manage.entity.UserEntity;
 import com.project.manage.service.IUserService;

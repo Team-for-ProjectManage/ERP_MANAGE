@@ -1,4 +1,4 @@
-package com.oa.manage.common;
+package com.project.manage.common;
 
 public class Result {
 

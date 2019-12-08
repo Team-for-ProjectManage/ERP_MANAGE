@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.oa.manage.common.Result;
+import com.project.manage.common.Result;
 import com.project.manage.service.IUserService;
 
 @RestController
