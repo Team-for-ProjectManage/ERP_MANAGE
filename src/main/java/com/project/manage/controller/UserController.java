@@ -4,15 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.project.manage.common.Result;
 import com.project.manage.service.IUserService;
-import com.project.manage.service.impl.UserServiceImpl;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,7 +33,7 @@ public class UserController {
 	@RequestMapping(value = "/index",method = RequestMethod.GET)
 	@ApiOperation(value = "主页面", notes="主页面")
 	public String indexShow() {
-		return "index1";
+		return "index";
 	}
 	
 }
