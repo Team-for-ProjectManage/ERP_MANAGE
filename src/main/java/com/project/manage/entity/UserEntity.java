@@ -1,9 +1,13 @@
 package com.project.manage.entity;
 
 import java.sql.Date;
+import java.util.Set;
 
-import javax.xml.crypto.Data;
-
+/**
+ * 用户表
+ * @author Administrator
+ *
+ */
 public class UserEntity {
 
 	private Integer userId;
@@ -16,6 +20,28 @@ public class UserEntity {
     
     private Date userBirthday;
 
+    /**
+            * 用户对应的角色集合
+     */
+    private Set<RoleEntity> roles;
+
+    public UserEntity(Integer userId,String userName,String userPwd,Set<RoleEntity> roles){
+    	this.userId = userId;
+    	this.userName = userName;
+    	this.userPwd = userPwd;
+    	this.roles = roles;
+    	
+    }
+    
+    public UserEntity(Integer userId,String userName,String userCode,String userPwd,Date userBirthday,Set<RoleEntity> roles){
+    	this.userId = userId;
+    	this.userName = userName;
+    	this.userCode = userCode;
+    	this.userPwd = userPwd;
+    	this.userBirthday = userBirthday;
+    	this.roles = roles;
+    }
+    
 	public Integer getUserId() {
 		return userId;
 	}
@@ -62,4 +88,13 @@ public class UserEntity {
 				+ userPwd + ", userBirthday=" + userBirthday + "]";
 	}
 
+	public Set<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<RoleEntity> roles) {
+		this.roles = roles;
+	}
+
+	
 }

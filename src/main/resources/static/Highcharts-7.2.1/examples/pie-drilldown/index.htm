@@ -1,23 +1,23 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Highcharts Example</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Highcharts Example</title>
 
-		<style type="text/css">
+<style type="text/css">
+</style>
+</head>
+<body>
+	<script src="../../code/highcharts.js"></script>
+	<script src="../../code/modules/data.js"></script>
+	<script src="../../code/modules/drilldown.js"></script>
 
-		</style>
-	</head>
-	<body>
-<script src="../../code/highcharts.js"></script>
-<script src="../../code/modules/data.js"></script>
-<script src="../../code/modules/drilldown.js"></script>
+	<div id="container"
+		style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 
-<div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
-
-<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
-<pre id="tsv" style="display:none">Browser Version    Total Market Share
+	<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+	<pre id="tsv" style="display: none">Browser Version    Total Market Share
 Microsoft Internet Explorer 8.0    26.61%
 Microsoft Internet Explorer 9.0    16.96%
 Chrome 18.0    8.01%
@@ -61,7 +61,7 @@ Microsoft Internet Explorer 8.0 - Tencent Traveler Edition    0.09%</pre>
 
 
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 // Create the chart
 Highcharts.chart('container', {
     chart: {
@@ -352,5 +352,5 @@ Highcharts.chart('container', {
     }
 });
 		</script>
-	</body>
+</body>
 </html>

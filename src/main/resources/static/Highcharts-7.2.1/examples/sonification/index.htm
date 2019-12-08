@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Highcharts Example</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Highcharts Example</title>
 
-		<style type="text/css">
+<style type="text/css">
 #container {
 	min-width: 320px;
 	max-width: 900px;
@@ -14,30 +14,27 @@
 }
 
 #controls {
-    margin: 0 auto;
-    text-align: center;
+	margin: 0 auto;
+	text-align: center;
 }
+</style>
+</head>
+<body>
+	<script src="../../code/highcharts.js"></script>
+	<script src="../../code/modules/data.js"></script>
+	<script src="../../code/modules/sonification.js"></script>
 
+	<div id="container"></div>
 
-		</style>
-	</head>
-	<body>
-<script src="../../code/highcharts.js"></script>
-<script src="../../code/modules/data.js"></script>
-<script src="../../code/modules/sonification.js"></script>
+	<div id="controls" style="">
+		<button id="play">Play</button>
+		<button id="pause">Pause</button>
+		<button id="rewind">Rewind</button>
+		<input type="range" id="speed" name="Speed" min="0.5" max="2"
+			value="1" step="0.05"> <label for="speed">Speed</label>
+	</div>
 
-<div id="container"></div>
-
-<div id="controls" style="">
-    <button id="play">Play</button>
-    <button id="pause">Pause</button>
-    <button id="rewind">Rewind</button>
-    <input type="range" id="speed" name="Speed" 
-         min="0.5" max="2" value="1" step="0.05">
-    <label for="speed">Speed</label>
-</div>
-
-<pre id="csv_data" style="display:none">2018-01-07,61,9,61,15.85714286
+	<pre id="csv_data" style="display: none">2018-01-07,61,9,61,15.85714286
 2018-01-14,66,20,61,33.85714286
 2018-01-21,56,41,60,31.85714286
 2018-01-28,61,46,58,39.28571429
@@ -82,7 +79,7 @@
 
 
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 // Sonification options
 var sdInstruments = [{
         instrument: 'sineMajor',
@@ -276,5 +273,5 @@ document.getElementById('rewind').onclick = function () {
 };
 
 		</script>
-	</body>
+</body>
 </html>
