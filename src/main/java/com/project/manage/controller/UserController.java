@@ -30,9 +30,9 @@ public class UserController {
 
 	@RequestMapping(value = "/hellopage",method = RequestMethod.GET)
 	@ApiOperation(value = "获取用户信息", notes="获取用户信息")
-	public ModelAndView helloPage(ModelAndView mv) {
+	public String helloPage(ModelAndView mv) {
 		mv.setViewName("index");
-		return mv;
+		return "index";
 
 	}
 	
