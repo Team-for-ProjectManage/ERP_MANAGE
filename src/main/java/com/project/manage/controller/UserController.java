@@ -35,9 +35,9 @@ public class UserController {
 	
 
 	@RequestMapping(value = "/index",method = RequestMethod.GET)
-	@ApiOperation(value = "获取用户信息", notes="获取用户信息")
+	@ApiOperation(value = "主页面", notes="主页面")
 	public String indexShow() {
-		return "index1";
+		return "index";
 	}
 	
 }
