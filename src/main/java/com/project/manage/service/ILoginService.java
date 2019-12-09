@@ -4,6 +4,6 @@ import com.project.manage.entity.UserEntity;
 
 public interface ILoginService {
 
-	UserEntity login();
+	UserEntity getUserByName(String userName);
 
 }

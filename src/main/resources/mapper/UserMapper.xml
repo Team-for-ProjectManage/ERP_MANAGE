@@ -4,14 +4,25 @@
  
     <resultMap id="BaseResultMap" type="com.project.manage.entity.UserEntity">
         <result column="user_id" jdbcType="INTEGER" property="userId" />
-        <result column="user_name" jdbcType="VARCHAR" property="userName" />
         <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
         <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
         <result column="user_birthday" jdbcType="DATE" property="userBirthday" />
     </resultMap>
+ 	
+ 	<sql id="Base_Column_List">
+	    user_id, user_code , user_name , user_pwd, user_birthday
+	</sql>
  
     <select id="findAll" resultMap="BaseResultMap">
-        select * from t_user
+    	select  <include refid="Base_Column_List" /> from t_user
+    </select>
+    
+    <select id="getUserByName" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from t_user 
+        where user_name = #{userName,jdbcType=VARCHAR}
     </select>
  
 </mapper>

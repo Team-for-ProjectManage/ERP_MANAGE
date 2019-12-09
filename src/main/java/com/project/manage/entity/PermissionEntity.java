@@ -10,11 +10,6 @@ public class PermissionEntity {
 	private Integer id;
 	
     private String permissionName;
-
-    public PermissionEntity(Integer id,String permissionName){
-    	this.id = id;
-    	this.permissionName = permissionName;
-    };
     
 	public Integer getId() {
 		return id;
