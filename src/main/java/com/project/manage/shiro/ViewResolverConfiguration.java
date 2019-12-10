@@ -1,4 +1,4 @@
-package com.project.manage.config;
+package com.project.manage.shiro;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
