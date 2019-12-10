@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.manage.common.Result;
 import com.project.manage.service.IUserService;
@@ -25,16 +26,22 @@ public class UserController {
 	
 	@RequestMapping(value = "/find",method = RequestMethod.GET)
 	@ApiOperation(value = "获取用户信息", notes="获取用户信息")
+	@ResponseBody
 	public Result findAll() {
+		logger.debug("this is info");
+		logger.info("this is info");
+		logger.error("this is error");
+		logger.warn("this is info");
 		System.out.println("sdasdffsd");
 		return userService.findAll();
 	}
 	
 
-	@RequestMapping(value = "/index",method = RequestMethod.GET)
-	@ApiOperation(value = "主页面", notes="主页面")
-	public String indexShow() {
-		return "index";
-	}
+	/*
+	 * @RequestMapping(value = "/index",method = RequestMethod.GET)
+	 * 
+	 * @ApiOperation(value = "主页面", notes="主页面") public String indexShow() { return
+	 * "index"; }
+	 */
 	
 }

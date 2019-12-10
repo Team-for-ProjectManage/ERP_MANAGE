@@ -72,7 +72,7 @@ public class ViewResolverConfiguration {
         }
  
         /**
-                       * 配置资源路径
+         * 配置资源路径
          * @param registry
          */
         @Override
