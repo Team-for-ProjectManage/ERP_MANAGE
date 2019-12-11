@@ -1,13 +1,16 @@
 package com.project.manage.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.manage.entity.UserEntity;
+import com.project.manage.redis.RedisUtil;
 
 import io.swagger.annotations.Api;
 
@@ -16,6 +19,9 @@ import io.swagger.annotations.Api;
 @Api(description = "接口测试")
 public class TestController {
 
+    @Resource
+	private RedisUtil redisUtil; 
+	
 	/**
 	 * 获得数据库信息
 	 * @param request
@@ -38,4 +44,15 @@ public class TestController {
         return "当前在线人数：" + count;
     }
 	
+    /**
+	 * 获得数据库信息
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/redis",method = RequestMethod.GET)
+    public String redis(HttpServletRequest request) {
+		redisUtil.get("runoobkey");
+		redisUtil.set("1123", "asdfasdf");
+        return (String) redisUtil.get("1123");
+    }
 }
