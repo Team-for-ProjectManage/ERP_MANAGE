@@ -19,34 +19,30 @@ import io.swagger.annotations.ApiOperation;
 @Api(description = "用户登录")
 public class LoginController {
 	
-	@RequestMapping(value = "/login",method = RequestMethod.GET)
-	@ApiOperation(value = "用户登录", notes="用户登录")
-	public String login(@RequestParam("userName") String userName,@RequestParam("userPwd") String userPwd) {
-		 //添加用户认证信息
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,userPwd);
-        try {
-            //进行验证，这里可以捕获异常，然后返回对应信息
-            subject.login(usernamePasswordToken);
-            //subject.checkRole("admin");
-            //subject.checkPermissions("query", "add");
-        } catch (AuthenticationException e) {
-            e.printStackTrace();
-            return "账号或密码错误！";
-        } catch (AuthorizationException e) {
-            e.printStackTrace();
-            return "没有权限";
-        }
-        return "login success";
-		
-	}
+	/*
+	 * @RequestMapping(value = "/login",method = RequestMethod.GET)
+	 * 
+	 * @ApiOperation(value = "用户登录", notes="用户登录") public String
+	 * login(@RequestParam("userName") String userName,@RequestParam("userPwd")
+	 * String userPwd) { //添加用户认证信息 Subject subject = SecurityUtils.getSubject();
+	 * UsernamePasswordToken usernamePasswordToken = new
+	 * UsernamePasswordToken(userName,userPwd); try { //进行验证，这里可以捕获异常，然后返回对应信息
+	 * subject.login(usernamePasswordToken); //subject.checkRole("admin");
+	 * //subject.checkPermissions("query", "add"); } catch (AuthenticationException
+	 * e) { e.printStackTrace(); return "账号或密码错误！"; } catch (AuthorizationException
+	 * e) { e.printStackTrace(); return "没有权限"; } return "login success";
+	 * 
+	 * }
+	 */
 	
     //注解验角色和权限
-    @RequiresRoles("admin")
-    @RequiresPermissions("add")
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index() {
-        return "index!";
-    }
+	/*
+	 * @RequiresRoles("admin")
+	 * 
+	 * @RequiresPermissions("add")
+	 * 
+	 * @RequestMapping(value = "/index",method = RequestMethod.GET) public String
+	 * index() { return "index!"; }
+	 */
 	
 }
