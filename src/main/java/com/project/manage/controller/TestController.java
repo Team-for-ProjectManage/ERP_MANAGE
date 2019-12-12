@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.manage.entity.UserEntity;
 import com.project.manage.redis.RedisUtil;
 
 import io.swagger.annotations.Api;
@@ -27,11 +26,12 @@ public class TestController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/user",method = RequestMethod.GET)
-    public UserEntity getUser(HttpServletRequest request) {
-        ServletContext application = request.getServletContext();
-        return (UserEntity) application.getAttribute("users");
-    }
+	/*
+	 * @RequestMapping(value = "/user",method = RequestMethod.GET) public UserEntity
+	 * getUser(HttpServletRequest request) { ServletContext application =
+	 * request.getServletContext(); return (UserEntity)
+	 * application.getAttribute("users"); }
+	 */
 	
 	/**
              * 获取当前在线人数，该方法有bug

@@ -1,9 +1,7 @@
 package com.project.manage.service;
 
-import com.project.manage.entity.UserEntity;
-
 public interface ILoginService {
 
-	UserEntity getUserByName(String userName);
+	//UserEntity getUserByName(String userName);
 
 }

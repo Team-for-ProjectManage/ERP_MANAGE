@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.manage.dao.TSysPermissionMapper">
+
+  <resultMap id="BaseResultMap" type="com.project.manage.entity.TSysPermission">
+    <id column="permission_id" jdbcType="INTEGER" property="permissionId" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="resource_type" jdbcType="VARCHAR" property="resourceType" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="available" jdbcType="VARCHAR" property="available" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    permission_id, permission_name, url, resource_type, parent_id, available
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_permission
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_permission
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_sys_permission
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.project.manage.entity.TSysPermission">
+    insert into t_sys_permission (permission_id, permission_name, url, 
+      resource_type, parent_id, available
+      )
+    values (#{permissionId,jdbcType=INTEGER}, #{permissionName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{resourceType,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{available,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.project.manage.entity.TSysPermission">
+    insert into t_sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionId != null">
+        permission_id,
+      </if>
+      <if test="permissionName != null">
+        permission_name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="resourceType != null">
+        resource_type,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null">
+        #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.manage.entity.TSysPermission">
+    update t_sys_permission
+    <set>
+      <if test="permissionName != null">
+        permission_name = #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null">
+        resource_type = #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.project.manage.entity.TSysPermission">
+    update t_sys_permission
+    set permission_name = #{permissionName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      resource_type = #{resourceType,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      available = #{available,jdbcType=VARCHAR}
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </update>
+ 
+</mapper>
