@@ -1,7 +1,10 @@
 package com.project.manage.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import com.project.manage.common.Result;
 import com.project.manage.common.ResultCode;
 import com.project.manage.dao.TSysPermissionMapper;
 import com.project.manage.entity.TSysPermission;
+import com.project.manage.entity.TSysRole;
 import com.project.manage.service.IPermissionService;
 
 @Service
@@ -104,6 +108,24 @@ public class PermissionServiceImpl implements IPermissionService{
 			logger.error("PermissionServiceImpl >> findAll error : " + e.getMessage());
 		}		
 		return result;
+	}
+
+	@Override
+	public Set<String> findPermissionsByUserId(Integer userId) {
+		Set<String> resultSet = new HashSet<String>();
+		logger.info("PermissionServiceImpl >> findPermissionsByUserId start");
+		try {
+			List<TSysPermission> permissions = permissionDao.findPermissionsByUserId(userId);
+			if (CollectionUtils.isNotEmpty(permissions)) {
+				for (TSysPermission  permission : permissions) {
+					resultSet.add(permission.getPermissionName());
+				}
+			}
+			logger.info("PermissionServiceImpl >> findPermissionsByUserId end");
+		} catch (Exception e) {
+			logger.error("RoleServiceImpl >> findRoleNameByUserId error : " + e.getMessage());
+		}		
+		return resultSet;
 	}
 
 }

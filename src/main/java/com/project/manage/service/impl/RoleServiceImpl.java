@@ -1,7 +1,10 @@
 package com.project.manage.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +112,24 @@ public class RoleServiceImpl implements IRoleService{
 			logger.error("RoleServiceImpl >> findAll error : " + e.getMessage());
 		}		
 		return result;
+	}
+
+	@Override
+	public Set<String> findRoleNameByUserId(Integer userId) {
+		Set<String> resultSet = new HashSet<String>();
+		logger.info("RoleServiceImpl >> findRoleNameByUserId start");
+		try {
+			List<TSysRole> roles = roleDao.findRoleNameByUserId(userId);
+			if (CollectionUtils.isNotEmpty(roles)) {
+				for (TSysRole  role : roles) {
+					resultSet.add(role.getRole());
+				}
+			}
+			logger.info("RoleServiceImpl >> findRoleNameByUserId end");
+		} catch (Exception e) {
+			logger.error("RoleServiceImpl >> findRoleNameByUserId error : " + e.getMessage());
+		}		
+		return resultSet;
 	}
 
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.project.manage.entity.TSysUser;
 
+import io.lettuce.core.dynamic.annotation.Param;
+
 public interface TSysUserMapper {
 	
     int deleteByPrimaryKey(Integer userId);
@@ -19,4 +21,13 @@ public interface TSysUserMapper {
     int updateByPrimaryKey(TSysUser record);
     
     List<TSysUser> findAll();
+
+
+	/**
+	 * 根据用户名和密码获取用户信息
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	public TSysUser getUserByNameAndPassword(@Param("userName")String userName, @Param("password")String password);
 }

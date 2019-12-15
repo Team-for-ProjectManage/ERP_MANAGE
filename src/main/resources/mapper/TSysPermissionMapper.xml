@@ -118,4 +118,13 @@
     where permission_id = #{permissionId,jdbcType=INTEGER}
   </update>
  
+  <select id="findPermissionsByUserId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_permission where permission_id in
+    	(select permission_id from t_sys_role_permission_ref 
+    	where role_id in(
+    		select role_id from t_sys_user_role_ref where user_id = #{userId,jdbcType=INTEGER}))
+  </select>
+ 
 </mapper>

@@ -106,4 +106,17 @@ public class UserServiceImpl implements IUserService{
 		}		
 		return result;
 	}
+
+	@Override
+	public TSysUser getUserByNameAndPassword(String userName, String password) {
+		logger.info("UserServiceImpl >> getUserByNameAndPassword start");
+		TSysUser user = null;
+		try {
+			user = userDao.getUserByNameAndPassword(userName,password);
+			logger.info("UserServiceImpl >> getUserByNameAndPassword end");
+		} catch (Exception e) {
+			logger.error("UserServiceImpl >> getUserByNameAndPassword error : " + e.getMessage());
+		}		
+		return user;
+	}
 }

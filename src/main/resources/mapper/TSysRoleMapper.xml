@@ -94,4 +94,11 @@
     where role_id = #{roleId,jdbcType=INTEGER}
   </update>
   
+  <select id="findRoleNameByUserId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_role where role_id in 
+    	(select role_id from t_sys_user_role_ref where user_id = #{userId,jdbcType=INTEGER})
+  </select>
+  
 </mapper>
