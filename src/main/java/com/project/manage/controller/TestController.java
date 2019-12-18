@@ -5,6 +5,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,7 @@ import com.project.manage.redis.RedisUtil;
 
 import io.swagger.annotations.Api;
 
-@RestController
+@Controller
 @RequestMapping(value = "/v1")
 @Api(description = "接口测试")
 public class TestController {
@@ -21,6 +22,26 @@ public class TestController {
     @Resource
 	private RedisUtil redisUtil; 
 	
+    /**
+ 	 * 获得数据库信息
+ 	 * @param request
+ 	 * @return
+ 	 */
+ 	@RequestMapping(value = "/html",method = RequestMethod.GET)
+     public String html() {
+         return "login";
+     }
+ 	
+ 	/**
+ 	 * 获得数据库信息
+ 	 * @param request
+ 	 * @return
+ 	 */
+ 	@RequestMapping(value = "/jsp",method = RequestMethod.GET)
+     public String jsp() {
+ 		return "login";
+     }
+    
 	/**
 	 * 获得数据库信息
 	 * @param request

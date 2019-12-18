@@ -24,7 +24,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @Controller
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/auth")
 @Api(description = "用户登录")
 public class LoginController {
 	
@@ -37,10 +37,10 @@ public class LoginController {
             TSysUser user = (TSysUser) subject.getPrincipal();
         } catch (DisabledAccountException e) {
             request.setAttribute("msg", "账户已被禁用");
-            return "login";
+            return "auth/login";
         } catch (AuthenticationException e) {
             request.setAttribute("msg", "用户名或密码错误");
-            return "login";
+            return "auth/login";
         }
 
         // 执行到这里说明用户已登录成功
@@ -50,7 +50,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
-        return "login";
+        return "auth/login";
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
