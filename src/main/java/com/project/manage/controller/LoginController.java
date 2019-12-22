@@ -29,9 +29,9 @@ import io.swagger.annotations.ApiOperation;
 public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String submitLogin(String username, String password, HttpServletRequest request) {
+    public String submitLogin(String userName, String password, HttpServletRequest request) {
         try {
-            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
             Subject subject = SecurityUtils.getSubject();
             subject.login(token);
             TSysUser user = (TSysUser) subject.getPrincipal();
