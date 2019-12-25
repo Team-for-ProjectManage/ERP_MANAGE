@@ -52,7 +52,7 @@ public class MyShiroRealm extends AuthorizingRealm{
             SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                     userList, //用户
                     userList.getUserPwd(), //密码
-                    getName()  //realm name
+                    userList.getUserName()  //realm name
             );
             return authenticationInfo;
         }
